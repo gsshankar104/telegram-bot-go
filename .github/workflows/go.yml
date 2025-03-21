@@ -42,4 +42,8 @@ jobs:
     - name: Run Bot
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-      run: ./bot
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+      run: |
+        echo "$GOOGLE_APPLICATION_CREDENTIALS" > credentials.json
+        export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/credentials.json
+        ./bot
