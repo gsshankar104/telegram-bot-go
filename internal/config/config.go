@@ -24,9 +24,9 @@ type Config struct {
 }
 
 type BotConfig struct {
-    Token string `yaml:"token"`
     Name  string `yaml:"name"`
 }
+
 
 type AdminConfig struct {
     IDs []string `yaml:"ids"`

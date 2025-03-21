@@ -1,5 +1,4 @@
 bot:
-  token: "YOUR_BOT_TOKEN"    # From @BotFather
   name: "Lottery Bot"
 
 admin:

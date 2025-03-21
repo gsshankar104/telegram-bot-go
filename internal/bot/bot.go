@@ -23,7 +23,12 @@ type Bot struct {
 }
 
 func New(storage storage.Storage, cfg *config.Config) (*Bot, error) {
-    api, err := tgbotapi.NewBotAPI(cfg.Bot.Token)
+    botToken := os.Getenv("TELEGRAM_BOT_TOKEN")
+    if botToken == "" {
+        return nil, fmt.Errorf("TELEGRAM_BOT_TOKEN environment variable not set")
+    }
+
+    api, err := tgbotapi.NewBotAPI(botToken)
     if err != nil {
         return nil, fmt.Errorf("failed to create bot: %v", err)
     }
