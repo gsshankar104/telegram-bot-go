@@ -1,4 +1,4 @@
-name: Go
+name: Go Bot CI/CD
 
 on:
   push:
@@ -17,31 +17,29 @@ jobs:
       with:
         go-version: '1.21'
 
-    - name: Verify dependencies
-      run: go mod verify
-
     - name: Build
-      run: go build -v ./...
+      run: go build -v ./cmd/bot
 
-    - name: Run tests
+    - name: Test
       run: go test -v ./...
 
-    - name: Create config
-      run: |
-        mkdir -p config
-        cp config/config.yaml.example config/config.yaml
-
-    - name: Create release
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      run: |
-        mkdir -p release
-        GOOS=linux GOARCH=amd64 go build -o release/bot-linux-amd64 cmd/bot/main.go
-        GOOS=windows GOARCH=amd64 go build -o release/bot-windows-amd64.exe cmd/bot/main.go
-        GOOS=darwin GOARCH=amd64 go build -o release/bot-darwin-amd64 cmd/bot/main.go
-
-    - name: Upload artifacts
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      uses: actions/upload-artifact@v3
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Go
+      uses: actions/setup-go@v4
       with:
-        name: binaries
-        path: release/
+        go-version: '1.21'
+    
+    - name: Build
+      run: go build -v ./cmd/bot
+    
+    - name: Run Bot
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      run: ./bot
