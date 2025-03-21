@@ -24,6 +24,12 @@ jobs:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
       run: |
-        echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > credentials.json
+        if [ -z "$GOOGLE_APPLICATION_CREDENTIALS" ]; then
+          echo "Error: GOOGLE_APPLICATION_CREDENTIALS secret is empty"
+          exit 1
+        fi
+        echo "Secret length: ${#GOOGLE_APPLICATION_CREDENTIALS}"
+        echo "$GOOGLE_APPLICATION_CREDENTIALS" | base64 --decode > credentials.json
+        cat credentials.json | jq . || echo "Error: Invalid JSON in credentials.json"
         export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/credentials.json
         go run ./cmd/bot/main.go
