@@ -1,13 +1,14 @@
 package bot
 
 import (
-    "context"
-    "fmt"
-    "log"
-    "strconv"
-    "strings"
-    "sync"
-    "time"
+	"context"
+	"fmt"
+	"log"
+	"os"
+	"strconv"
+	"strings"
+	"sync"
+	"time"
 
     tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
     "github.com/gsshankar104/telegram-bot/internal/config"
