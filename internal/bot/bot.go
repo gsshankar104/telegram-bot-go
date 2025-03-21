@@ -10,9 +10,9 @@ import (
     "time"
 
     tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-    "github.com/user/telegram-bot/internal/config"
-    "github.com/user/telegram-bot/internal/models"
-    "github.com/user/telegram-bot/internal/storage"
+    "github.com/gsshankar104/telegram-bot/internal/config"
+    "github.com/gsshankar104/telegram-bot/internal/models"
+    "github.com/gsshankar104/telegram-bot/internal/storage"
 )
 
 type Bot struct {

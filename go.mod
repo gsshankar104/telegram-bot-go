@@ -1,4 +1,4 @@
-module github.com/user/telegram-bot
+module github.com/gsshankar104/telegram-bot
 
 go 1.23.0
 

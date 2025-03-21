@@ -8,9 +8,9 @@ import (
     "sync"
     "time"
 
-    "github.com/user/telegram-bot/internal/config"
-    "github.com/user/telegram-bot/internal/models"
-    "github.com/user/telegram-bot/internal/storage"
+    "github.com/gsshankar104/telegram-bot/internal/config"
+    "github.com/gsshankar104/telegram-bot/internal/models"
+    "github.com/gsshankar104/telegram-bot/internal/storage"
     
     "google.golang.org/api/drive/v3"
     "google.golang.org/api/option"

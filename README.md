@@ -30,7 +30,7 @@ git commit -m "Initial commit: Telegram bot implementation"
 
 5. Link your local repository to GitHub
 ```bash
-git remote add origin https://github.com/YOUR_USERNAME/telegram-bot-go.git
+git remote add origin https://github.com/gsshankar104/telegram-bot-go.git
 ```
 
 6. Push your code

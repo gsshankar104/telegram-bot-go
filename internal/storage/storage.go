@@ -4,7 +4,7 @@ import (
     "context"
     "time"
 
-    "github.com/user/telegram-bot/internal/models"
+    "github.com/gsshankar104/telegram-bot/internal/models"
 )
 
 // StorageError represents a custom error type for storage operations

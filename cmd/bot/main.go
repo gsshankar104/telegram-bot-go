@@ -8,9 +8,9 @@ import (
     "os/signal"
     "syscall"
 
-    "github.com/user/telegram-bot/internal/bot"
-    "github.com/user/telegram-bot/internal/config"
-    "github.com/user/telegram-bot/internal/storage/drive"
+    "github.com/gsshankar104/telegram-bot/internal/bot"
+    "github.com/gsshankar104/telegram-bot/internal/config"
+    "github.com/gsshankar104/telegram-bot/internal/storage/drive"
 )
 
 func main() {
