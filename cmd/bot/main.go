@@ -15,9 +15,9 @@ import (
 
 func main() {
     // Load config
-    if err := config.Load("config/config.yaml"); err != nil {
-        log.Fatalf("Failed to load config: %v", err)
-    }
+    //if err := config.Load("config/config.yaml"); err != nil {
+    //    log.Fatalf("Failed to load config: %v", err)
+    //}
 
     // Create storage
     storage, err := drive.NewDriveStorage(context.Background(), "credentials.json")
