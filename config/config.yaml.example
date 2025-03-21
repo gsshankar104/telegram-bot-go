@@ -1,0 +1,28 @@
+bot:
+  token: "YOUR_BOT_TOKEN"    # From @BotFather
+  name: "Lottery Bot"
+
+admin:
+  ids:
+    - "YOUR_TELEGRAM_ID"    # Your Telegram User ID
+
+database:
+  drive_folder_id: "YOUR_GOOGLE_DRIVE_FOLDER_ID"
+
+channels:
+  lottery_proof: "https://t.me/YOUR_LOTTERY_PROOF_CHANNEL"
+  lottery_win: "https://t.me/YOUR_LOTTERY_WIN_CHANNEL"
+
+payment:
+  qr_code_link: "YOUR_QR_CODE_IMAGE_URL"
+
+tickets:
+  prices:
+    - 100
+    - 200
+    - 500
+    - 1000
+
+limits:
+  max_invalid_attempts: 3
+  command_rate_limit: 5  # commands per minute
