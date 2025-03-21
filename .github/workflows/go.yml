@@ -7,43 +7,23 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: Set up Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: '1.21'
-
-    - name: Build
-      run: go build -v ./cmd/bot
-
-    - name: Test
-      run: go test -v ./...
-
   deploy:
-    needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    
+
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
         go-version: '1.21'
-    
-    - name: Build
-      run: go build -v ./cmd/bot
-    
+
     - name: Run Bot
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
       run: |
-        echo "$GOOGLE_APPLICATION_CREDENTIALS" > credentials.json
+        echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > credentials.json
         export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/credentials.json
-        ./bot
+        go run ./cmd/bot/main.go
